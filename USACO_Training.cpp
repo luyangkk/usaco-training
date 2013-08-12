@@ -14,8 +14,8 @@ int main(int argc, char* argv[]) {
     freopen("humble.in", "r", stdin);
     freopen("humble.out", "w", stdout);
 
-    //ifstream fin("preface.in");
-    //ofstream fout("preface.out");
+    //ifstream fin("humble.in");
+    //ofstream fout("humble.out");
 
 	scanf("%d %d", &k, &n);
 	for (int i = 0; i < k; i++) {
