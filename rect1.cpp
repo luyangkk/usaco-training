@@ -6,7 +6,8 @@ LANG: C++
 
 #include <cstdio>
 
-int a, b, n, llx[2505], lly[2505], urx[2505], ury[2505], s[2505], c[2505];
+int a, b, n, max_color; 
+int llx[2505], lly[2505], urx[2505], ury[2505], s[2505], c[2505];
 
 void cover(int lx, int ly, int ux, int uy, int c, int k) {
     while (k <= n && (llx[k] >= ux || urx[k] <= lx || ury[k] <= ly || lly[k] >= uy))
@@ -27,20 +28,20 @@ int main(int argc, char* argv[]) {
     scanf("%d %d %d", &a, &b, &n);
     for (int i = 1; i <= n; i++) {
         scanf("%d %d %d %d %d", &llx[i], &lly[i], &urx[i], &ury[i], &c[i]);
+		if (c[i] > max_color) max_color = c[i];
     }
 
     for (int i = 1; i <= n; i++) {
         cover(llx[i], lly[i], urx[i], ury[i], c[i], i + 1);
     }
 
-    int total = 0;
-    for (int i = 1; i <= n; i++) {
-        total += s[c[i]];
+	s[1] = a * b;
+    for (int i = 2; i <= max_color; i++) {
+		if (s[i]) s[1] -= s[i];
     }
 
-    printf("1 %d\n", a * b - total);
-    for (int i = 1; i <= n; i++) {
-        printf("%d %d\n", c[i], s[c[i]]);
+    for (int i = 1; i <= max_color; i++) {
+        if (s[i]) printf("%d %d\n", i, s[i]);
     }
 
     return 0;
