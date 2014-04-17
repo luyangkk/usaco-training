@@ -4,7 +4,6 @@ PROG: contact
 LANG: C++
 */
 
-#include <stdafx.h>
 #include <cstdio>
 #include <cmath>
 #include <algorithm>
